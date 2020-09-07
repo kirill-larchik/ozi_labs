@@ -10,7 +10,7 @@ namespace PolybiusSquareLibrary
 {
     public class PolybiusSquare
     {
-        Regex regex = new Regex(@"(^|\s)[а-яА-Я]+");
+        Regex regex = new Regex(@"(^|\s)[А-Я]+");
 
         private char[,] polybiusSquare = new char[,]
         {

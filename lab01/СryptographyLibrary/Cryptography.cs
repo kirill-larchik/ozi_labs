@@ -12,7 +12,7 @@ namespace СryptographyLibrary
     {
         public Dictionary<int, char> keyValuePairs { get; private set; }
 
-        private char[] letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФЧЦЧШЪЩЬЭЮЯабвгдеёжзийклмнопрстуфхцчшъщьэюя1234567890 .,!?:;-".ToCharArray();
+        private char[] letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФЧЦЧШЪЩЬЭЮЯЫабвгдеёжзийклмнопрстуфхцчшъщыьэюя1234567890 .,!?:;-".ToCharArray();
 
         public Cryptography()
         {
