@@ -12,7 +12,6 @@ namespace СryptographyLibrary
     {
         public Dictionary<int, char> keyValuePairs { get; private set; }
 
-        //TODO: цифры нужно кодировать?
         private char[] letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФЧЦЧШЪЩЬЭЮЯабвгдеёжзийклмнопрстуфхцчшъщьэюя1234567890 .,!?:;-".ToCharArray();
 
         public Cryptography()

@@ -50,12 +50,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptographyUT.cs" />
+    <Compile Include="PolybiusSquareUT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PolybiusSquareLibrary\PolybiusSquareLibrary.csproj">
+      <Project>{429b21c9-214d-48c5-bd8e-dbd07f4cedd4}</Project>
+      <Name>PolybiusSquareLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\СryptographyLibrary\СryptographyLibrary.csproj">
       <Project>{55506148-854d-486d-be41-9017bab8a0a0}</Project>
       <Name>СryptographyLibrary</Name>
