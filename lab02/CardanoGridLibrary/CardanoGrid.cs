@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -72,7 +74,9 @@ namespace CardanoGridLibrary
             {5 ,7 }
         };
 
-        public string[,] Encryption(string message)
+        Random random = new Random();
+
+        public string Encryption(string message)
         {
             string[,] table = new string[6, 10];
 
@@ -82,7 +86,20 @@ namespace CardanoGridLibrary
                 table[cryptArray[i, 0], cryptArray[i, 1]] = c.ToString();
                 i++;
             }
-            return table;
+
+            StringBuilder builder = new StringBuilder();
+            for (i = 0; i < table.GetLength(0); i++)
+            {
+                for (int j = 0; j < table.GetLength(1); j++)
+                {
+                    if (table[i, j] == null)
+                        builder.Append((char)random.Next(1040, 1104));
+                    else
+                        builder.Append(table[i, j]);
+                }
+            }
+
+            return builder.ToString();
         }
 
         public string Decryption(string message)
