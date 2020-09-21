@@ -26,7 +26,7 @@ namespace PolynomMethodLibrary
             }
             set
             {
-                if (value > 0)
+                if (value > 3)
                 {
                     _n = value;
                     
@@ -66,7 +66,7 @@ namespace PolynomMethodLibrary
         private void FillKeyValuePairs()
         {
             for (int i = 0; i < letters.Length; i++)
-                keyValuePairs.Add(letters[i], i);
+                keyValuePairs.Add(letters[i], i + 1);
         }
 
         private void FillNewValueKeyPairs()
@@ -82,8 +82,16 @@ namespace PolynomMethodLibrary
         {
             int sum = 0;
             for (int i = 0; i < _n; i++)
+            {
+                if (value < 1)
+                    throw new Exception("Неверный формат большого простого числа.");
+
                 sum += (int)(i * Math.Pow(value, _n - i));
+            }
             sum = (sum + _n) % _p;
+                
+            if (sum > _p || sum < 1)
+                throw new Exception("Неверный формат чисел (n и p)."); 
 
             return sum;
         }
@@ -96,7 +104,7 @@ namespace PolynomMethodLibrary
 
             for (int i = 0; i < wordLetters.Length; i++)
             {
-                foreach (KeyValuePair<char, int> pair in keyValuePairs)
+                foreach (KeyValuePair<char, int> pair in newKeyValuePairs)
                 {
                     if (wordLetters[i] == pair.Key)
                     {
@@ -136,10 +144,14 @@ namespace PolynomMethodLibrary
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < values.Length; i++)
             {
+                //if (i == values.Length - 1)
+                //    builder.Append(Function(values[i]));
+                //else
+                //    builder.Append(Function(values[i]) + " ");
                 if (i == values.Length - 1)
-                    builder.Append(Function(values[i]));
+                    builder.Append(values[i]);
                 else
-                    builder.Append(Function(values[i]) + " ");
+                    builder.Append(values[i] + " ");
             }
 
             return builder.ToString();
@@ -147,6 +159,8 @@ namespace PolynomMethodLibrary
 
         public string Decryption(string message)
         {
+            FillNewValueKeyPairs();
+
             if (!numberRegex.IsMatch(message))
                 throw new Exception("Неверный формат сообщения.");
 
